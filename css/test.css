@@ -1,0 +1,6 @@
+<!-- CSS goes in the document HEAD or added to your external stylesheet -->
+<style type="text/css">
+div.updatestyle {
+	border:1px solid #F00; width:200px; height:100px
+}
+</style>
