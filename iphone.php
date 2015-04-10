@@ -6,7 +6,7 @@
   	<script type="text/javascript" src="./js/highcharts.js"></script>
  
 
-	<title> NaviCrash </title>
+	<title> IphoneCrash </title>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>	
@@ -19,7 +19,7 @@
 
 	$cr = new CrashData();
 	$msql = new MySqlInterface("localhost","root","");
-	$sql = "select * from crashdata where os = 'android' order by day DESC limit 9";
+	$sql = "select * from iphonedata where os = 'ios' order by day DESC limit 9";
 
 	$cr = $msql->getCrashData($sql);
 	$num = count($cr->day);
@@ -32,7 +32,7 @@
 		echo "<td>" . $cr->day[$i] . "</td>";
 		echo "<td>" . $cr->mapnavi[$i] . "</td>";
 		echo "<td>" . $cr->map[$i] . "</td>";
-		echo "<td>" . sprintf("%.2f", $cr->rate[$i]*100) . "%" . "</td>";
+		echo "<td>" . sprintf("%.2f", $cr->rate[$i]) . "%" . "</td>";
 		echo "<td>" . $cr->sv[$i] . "</td>";
 		//echo "<td>" . $cr->os[$i] . "</td>";
 		echo "</tr>\n";
@@ -43,9 +43,9 @@
 		}
 
 		if($i !=  0) {
-			$crashrate = $crashrate . sprintf("%.2f", $cr->rate[$i]*100) . ",";
+			$crashrate = $crashrate . sprintf("%.2f", $cr->rate[$i]) . ",";
 		} else {
-			$crashrate = $crashrate . sprintf("%.2f", $cr->rate[$i]*100) . "]";
+			$crashrate = $crashrate . sprintf("%.2f", $cr->rate[$i]) . "]";
 		}
 	}
 	echo "</table>\n";

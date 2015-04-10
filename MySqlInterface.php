@@ -39,6 +39,16 @@ class MySqlInterface {
 			
 
 		}
+		
 		return $cr;
 	}
+
+	function insertData($sql) {
+		mysql_real_escape_string($sql);
+			
+		$result = mysql_query($sql);
+
+		print_r($result);
+	}
+	
 }
