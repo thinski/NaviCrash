@@ -25,7 +25,8 @@
 	<select name="tag" > 
 		<option value="NaviCookie"> 导航Cookie  </option>
 		<option value="MapCookie">  地图Cookie   </option>
-		<option value="LastestSV">  最新组件版本号 </option>
+		<option value="LastestSV">  最新Android版本号 </option>
+		<option value="iPhoneSV">  最新iOS版本号 </option>
 	</select>	<br> <br>
 	<textarea  rows="10" name = "content" ></textarea>
 	<br>
@@ -48,6 +49,8 @@
 		}
 		elseif ($tag == "LastestSV")
 			$filename = "LastestSV.txt";
+		elseif ($tag == "iPhoneSV")
+			$filename = "IOSSV.txt";
 		else {
 			$filename = "log.txt";
 			echo "error tag";

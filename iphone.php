@@ -79,7 +79,7 @@
         },
         
         series: [{
-            name: 'Android组件',
+            name: 'iOS组件',
             data: <?php echo $crashrate; ?>
         }]
         
