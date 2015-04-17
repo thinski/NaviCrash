@@ -23,6 +23,7 @@
 	请选择要更新的内容：<br>
 	<br>
 	<select name="tag" > 
+		<option value="getCrash"> 抓取指定日期数据 </option>
 		<option value="NaviCookie"> 导航Cookie  </option>
 		<option value="MapCookie">  地图Cookie   </option>
 		<option value="LastestSV">  最新Android版本号 </option>
@@ -34,6 +35,7 @@
 	<input  class="btn btn-default" type="submit" name="sumbit"	value="提交" />
 </form>
 </div>
+
 
 
 
@@ -51,7 +53,10 @@
 			$filename = "LastestSV.txt";
 		elseif ($tag == "iPhoneSV")
 			$filename = "IOSSV.txt";
-		else {
+		elseif ($tag == "getCrash"){
+			get_crash($content);
+			return;
+		}else {
 			$filename = "log.txt";
 			echo "error tag";
 		}
@@ -61,6 +66,11 @@
 		fwrite($file, $content);
 		echo "write to file";
 		fclose($file);
+	}
+	function get_crash($content) {
+		echo "get crash data ". $content ."\n";
+		$cmd = "sh run.sh " . $content;
+		passthru($cmd);
 	}
 	?>
 </body>
