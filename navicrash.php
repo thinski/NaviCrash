@@ -2,25 +2,80 @@
 <head >
 	<link rel="stylesheet" type="text/css" href="./css/bootstrap.css" />
 	<link rel="stylesheet" type="text/css" href="./css/test.css" />
+	<link rel="stylesheet" type="text/css" href="./css/crashDefault.css" />
+	<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" type="text/css">
 	<script type="text/javascript" src="./js/jquery.min.js"></script>
+	<script type="text/javascript" src="./js/crashlog.js"></script>
   	<script type="text/javascript" src="./js/highcharts.js"></script>
- 
+ 	<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>    
+	<script type="text/javascript" src="js/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>   
 
 	<title> NaviCrash </title>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>	
 	<body>
-<?php require_once ("./titlebar.html"); ?>
+<?php require_once ("./titlebar.html"); 
+	if (isset($_POST['action']) && $_POST['action'] == 'submitted') {
+		$start = $_POST['start'];
+		$end = $_POST['end'];
+	} else {
+		$start = date('Y-m-d',time()-86400*9);
+		$end = date('Y-m-d',time());
+	}
+	$start = date('Y-m-d',strtotime($start));
+	$end = date('Y-m-d',strtotime($end));
+?>
+
+ <div class="container">
+           <!--    <div class = "col-md-12"> -->
+                    <table class = "table table-bordered">
+                        <thead>
+                            <tr style="background-color: #006699">
+                                <th><font color="white">请选择时间段</font></th>
+                                <th colspan="5" >
+							<form action="navicrash.php" method="post">
+                                    <div class="select_time" >
+										<!--class="time"  -->
+                                        <input style="text-align:left; float:left;width:100px;" type="text" value=<?php echo $start; ?> id="selectBeginTime" name="start" data-date-format="yyyy-mm-dd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <script>
+                                            $('#selectBeginTime').datetimepicker({
+                                                format: 'yyyy-mm-dd',
+                                                //startDate: document.getElementById("selectEndTime").value,   
+                                                minView: 2
+                                            });
+                                        </script>
+                                        <input style="text-align:left; float:left;width:100px;" type="text" value=<?php echo $end;  ?> id="selectEndTime" name="end" data-date-format="yyyy-mm-dd">
+                                        <script>
+                                            $('#selectEndTime').datetimepicker({
+                                                format: 'yyyy-mm-dd',
+                                                minView: 2
+                                            });
+                                        </script>
+                                   	    <input type="hidden" name="action" value="submitted" />
+                                       <input type="submit" class="btn btn-sm btn-warning" value="确定" />
+                                    </div>
+									
+								</form>	
+                                </th>
+
+                            </tr>
+                        </thead>
+                    </table>
+         <!--       </div>   -->
+            </div>
 
 <div id="crashtable" class="container">
 <?php
 	require_once './MySqlInterface.php';
 
+	
+
 	$cr = new CrashData();
 	$msql = new MySqlInterface("localhost","root","");
-	$sql = "select * from crashdata where os = 'android' order by day DESC limit 9";
-
+	
+	$sql = "select * from crashdata where os = 'android' and day >=" ."'" .$start."'"." and day<="."'".$end."'" . " order by day DESC ";
+	
 	$cr = $msql->getCrashData($sql);
 	$num = count($cr->day);
 	$value_date = "[";

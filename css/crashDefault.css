@@ -1,0 +1,113 @@
+body {
+    position: relative;
+    color: #000;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.isolation {
+    margin: 20px;
+    padding: 0px;
+}
+
+.lineChart {
+    position: relative;
+    top: 100px
+}
+
+.board {
+    margin-bottom: 30px;
+    padding: 0px;
+    background-color: #DDD;
+    border-radius: 5px;
+    height: 50px;
+}
+
+.brief {
+
+    margin-bottom: 20px;
+    padding: 0px;
+    height: 130px;
+    width: 214px;
+    background-color: #0099CC;
+    border-radius: 5px;
+    text-align: center;
+
+}
+
+.brief p {
+    position: relative;
+    top: 6%;
+    font-size: 23px;
+    color: #ffffff;
+}
+
+.briefnumber {
+    position: relative;
+    top: 15%;
+    font-size: 25px;
+    color: #ffffff;
+}
+
+.sheet {
+    width: 975px;
+}
+
+.sheet tbody{
+    width: 975px;
+}
+
+.date_button {
+    position: relative;
+    margin-top: 9px;
+}
+
+.time {
+    margin-top: 0px;
+    width: 80px;
+}
+
+.verify_date_button {
+    position: relative;
+    float: left;
+    margin-top: 11px;
+}
+
+.multi_conditions {
+    font-weight: bold;
+
+}
+
+.select_time {
+    position: relative;
+    float: right;
+}
+
+.select_condictions {
+    height: 100px;
+    overflow: auto;
+}
+
+.select_condictions2 {
+    height: 35px;
+    overflow: auto;
+}
+
+.unfold_button {
+    position: relative;
+    float: right;
+}
+
+.select_condictions_td {
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search {
+    width: 200px;
+}
+
+
+
