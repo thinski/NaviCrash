@@ -30,7 +30,7 @@ require_once './MySqlInterface.php';
 	<input type="text" name = "navicrash"/> <br> <br>
 	<p>地图总crash数：</p>
 	<input type="text" name = "mapcrash" /> <br> <br>
-	<p>导航crash占比（不要加%）：</p>
+	<p>导航crash占比（填小数不要加%，如0.28）：</p>
 	<input type="text" name = "rate"/> <br> <br>
 	<p>版本号：</p>
 	<input type="text" name = "sv" /> <br> <br>
