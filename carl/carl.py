@@ -3,7 +3,7 @@ import math
 
 speedmath = [0,105,555,1005,2755,5505,13505]   # 个人所得税速算扣除数
 
-income = 16000      # 税前收入
+income = 100000      # 税前收入
 average = 6054       # 本市平均工资
 least = 2030         # 本市最低工资
 
@@ -16,20 +16,20 @@ rate = {               # 个人缴纳的各项税率
 
 
 def get_tax(shebao,gjj):
-    k = income - shebao - gjj -3500
+    k = income - shebao - gjj - 3500
 
     tax = 0
-    if k <= 1500 and k >= 0:
+    if 0 < k <= 1500:
         tax = k*0.03 - speedmath[0]
-    elif k > 1500 and k <= 4500:
+    elif 1500 < k <= 4500:
         tax = k*0.1 - speedmath[1]
-    elif k > 4500 and k <= 9000:
+    elif 4500 < k <= 9000:
         tax = k*0.2 - speedmath[2]
-    elif k > 9000 and k <= 35000:
+    elif 9000 < k <= 35000:
         tax = k*0.25 - speedmath[3]
-    elif k > 35000 and k <= 55000:
+    elif 35000 < k <= 55000:
         tax = k*0.3 - speedmath[4]
-    elif k > 55000 and k <= 80000:
+    elif 55000 < k <= 80000:
         tax = k*0.35 - speedmath[5]
     elif k > 80000:
         tax = k*0.45 - speedmath[6]
@@ -37,8 +37,8 @@ def get_tax(shebao,gjj):
     return tax
 
 def get_shebao(income,average,least):
-    if income >= average*3:
-        income = average*3
+    if income >= average * 3:
+        income = average * 3
     old = income * rate['old']
     medical = income * rate['medical']
     shiye = least * rate['shiye']
@@ -47,8 +47,8 @@ def get_shebao(income,average,least):
     return total
 
 def get_gjj(income,average):
-    if income >= average *5:
-        income = average*5
+    if income >= average * 5:
+        income = average * 5
     gjj = income * rate['gjj']
     print '公积金：' + str(gjj)
     return gjj
